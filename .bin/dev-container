@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BINDIR=$(cd $(dirname $0);pwd)
+PROJECT_DIR=$(dirname $BINDIR)
+
+docker run \
+    -itd \
+    --mount type=bind,source=$PROJECT_DIR,target=/home/ubuntu/project \
+    --mount type=bind,source=$HOME/.aws,target=/home/ubuntu/.aws \
+    -p 3030:80 \
+    --name ts-web-scraper \
+    dev-container/node:16.18.0

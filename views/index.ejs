@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>けつげ</h1>
+    <button id="btn">データをとってくる</button>
+    <dl>
+        <% results.forEach(e=> { %>
+            <dt>口径</dt>
+            <dd>
+                <%= e.name %>
+            </dd>
+            <dt>使用武器</dt>
+            <dd>
+                <%= e.usedBy %>
+            </dd>
+            <% }); %>
+    </dl>
+    <script>
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json())
+                .then(json => console.log(json))
+        })
+    </script>
+</body>
+
+</html>
